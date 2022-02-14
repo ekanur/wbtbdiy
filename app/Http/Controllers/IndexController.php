@@ -72,11 +72,15 @@ class IndexController extends Controller
             });
             // dd(response()->json($data));
             return response()->json($data);
-       
     }
 
     public function detailEvent(Event $event)
     {
         return view("detail-event", ['event' => $event]);
+    }
+
+    public function ajukan()
+    {
+        return view("ajukan");
     }
 }

@@ -42,6 +42,7 @@ use Illuminate\Http\Request;
 */
 
 Route::get('/', [IndexController::class, 'index'])->name('index');
+Route::get("/ajukan", [IndexController::class, 'ajukan'])->name('ajukan');
 Route::get('/wbtb', [IndexController::class, 'wbtb'])->name('wbtb');
 Route::get('/wbtb/{wbtb}', [IndexController::class, 'detail'])->name('detail');
 Route::get('/preview/{id}', [IndexController::class, 'preview'])->name('preview');

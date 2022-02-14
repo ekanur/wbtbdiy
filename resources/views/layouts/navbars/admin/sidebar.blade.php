@@ -71,7 +71,7 @@
                             </g>
                         </svg>
                     </div>
-                    <span class="nav-link-text ms-1">Pengusulan</span>
+                    <span class="nav-link-text ms-1">Penetapan</span>
                 </a>
             </li>
             <li class="nav-item pb-2">
