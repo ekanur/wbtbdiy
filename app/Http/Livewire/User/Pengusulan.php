@@ -17,7 +17,7 @@ class Pengusulan extends Component
 
     // $fieldsAvailable property for available input added
     // by default 0  
-    public $fieldsAvailable = [];
+    public $fieldsAvailable = [0];
 
     public $showSuccesNotification  = false;
 
@@ -101,9 +101,7 @@ class Pengusulan extends Component
 
     // function for add fields
     public function addFields(){
-        array_push($this->fieldsAvailable ,0);
-
-        if (end($this->fieldsAvailable) != 0){
+        if (count($this->fieldsAvailable) != 0){
             $i = end($this->fieldsAvailable) + 1;
             array_push($this->fieldsAvailable ,$i);
         }
