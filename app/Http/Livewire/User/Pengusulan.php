@@ -14,7 +14,10 @@ class Pengusulan extends Component
     public $domain;
     public $kondisi;
     public $deskripsi;
-    
+
+    // $fieldsAvailable property for available input added
+    // by default 0  
+    public $fieldsAvailable = [];
 
     public $showSuccesNotification  = false;
 
@@ -91,8 +94,18 @@ class Pengusulan extends Component
 
     public function render()
     {
-        return view('livewire.user.pengusulan', ['pengusulan' => WarisanBudaya::whereUserId(auth()->user()->id)->get()]);
+        return view('livewire.user.pengusulan', ['pengusulan' => WarisanBudaya::whereUserId(auth()->user()->id)->get(),
+            'fieldsAvailable' => $this->fieldsAvailable 
+        ]);
     }
 
-    
+    // function for add fields
+    public function addFields(){
+        array_push($this->fieldsAvailable ,0);
+
+        if (end($this->fieldsAvailable) != 0){
+            $i = end($this->fieldsAvailable) + 1;
+            array_push($this->fieldsAvailable ,$i);
+        }
+    }
 }

@@ -36,18 +36,46 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- one row for default field id pelaku and add field button -->
                         <div class="row">
-                          <div class="col-md-6">
-                              <div class="form-group">
-                                  <label for="pelaku" class="form-control-label">{{ __('Pelaku Warisan Budaya') }}</label>
-                                  <div class="@error('pelaku')border border-danger rounded-3 @enderror">
-                                      <input wire:model='pelaku' class="form-control" type="text"
-                                          placeholder="Pelaku Warisan Budaya" id="pelaku">
-                                  </div>
-                                  @error('pelaku') <div class="text-danger">{{ $message }}</div> @enderror
-                              </div>
-                          </div>
-                          <div class="col-md-3">
+                            <!-- default field with id pelaku  -->
+                            <div class="col-md-9">
+                                    <div class="form-group">
+                                        <label for="pelaku" class="form-control-label">{{ __('Pelaku Warisan Budaya') }}</label>
+                                        <div class="@error('pelaku')border border-danger rounded-3 @enderror">
+                                            <input wire:model='pelaku' class="form-control" type="text"
+                                                placeholder="Pelaku Warisan Budaya" id="pelaku">
+                                        </div>
+                                        @error('pelaku') <div class="text-danger">{{ $message }}</div> @enderror
+                                    </div>
+                            </div>
+
+                            <!-- button for add more field -->
+                            <div class="col-md-3">
+                                <label class="form-control-label">Tambah Pelaku Warisan Budaya</label>
+                                <button class="mt- btn btn-primary" wire:click.prevent="addFields">Tambah</button>
+                            </div>    
+                        </div>
+                        
+                        <!-- looping field element by $fieldsAvailable -->
+                        <!-- field without error and without wire:model -->
+                        @foreach($fieldsAvailable as $index)
+                        <div class="row">
+                            <div class="col-md-9">
+                                <div class="form-group">
+                                    <label for="pelaku{{$index}}" class="form-control-label">Pelaku Warisan Budaya</label>
+                                    <div class="@error('pelaku{{$index}}') border border-danger rounded-3 @enderror">
+                                    <input class="form-control" type="text"
+                                                placeholder="Pelaku Warisan Budaya" id="pelaku{{$index}}">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>        
+                        @endforeach
+                                                   
+                        <div class="row">
+                            <div class="col-md-6">
                               <div class="form-group">
                                   <label for="domain" class="form-control-label">{{ __('Domain Warisan Budaya') }}</label>
                                   <div class="@error('domain') border border-danger rounded-3 @enderror">
@@ -83,24 +111,25 @@
                                   </div>
                                   @error('domain') <div class="text-danger">{{ $message }}</div> @enderror
                               </div>
-                          </div>
-                          <div class="col-md-3">
-                              <div class="form-group">
-                                  <label for="kondisi" class="form-control-label">{{ __('Kondisi') }}</label>
-                                  <div class="@error('kondisi') border border-danger rounded-3 @enderror">
-                                      <select name="kondisi" wire:model='kondisi' id="kondisi" class="form-control">
-                                          <option>--pilih--</option>  
-                                          <option value="berkembang">Sedang Berkembang</option>
-                                          <option value="bertahan">Masih Bertahan</option>
-                                          <option value="berkurang">Sudah Berkurang</option>
-                                          <option value="terancam">Terancam Punah</option>
-                                          <option value="punah">Punah</option>
-                                      </select>
-                                  </div>
-                                  @error('kondisi') <div class="text-danger">{{ $message }}</div> @enderror
-                              </div>
-                          </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="kondisi" class="form-control-label">{{ __('Kondisi') }}</label>
+                                    <div class="@error('kondisi') border border-danger rounded-3 @enderror">
+                                        <select name="kondisi" wire:model='kondisi' id="kondisi" class="form-control">
+                                            <option>--pilih--</option>  
+                                            <option value="berkembang">Sedang Berkembang</option>
+                                            <option value="bertahan">Masih Bertahan</option>
+                                            <option value="berkurang">Sudah Berkurang</option>
+                                            <option value="terancam">Terancam Punah</option>
+                                            <option value="punah">Punah</option>
+                                        </select>
+                                    </div>
+                                    @error('kondisi') <div class="text-danger">{{ $message }}</div> @enderror
+                                </div>
+                            </div>
                         </div>
+                        
                         <div class="form-group" wire:ignore>
                             <label for="deskripsi">{{ 'Deskripsi' }}</label>
                             <div class="@error('deskripsi') border border-danger rounded-3 @enderror">
@@ -109,6 +138,7 @@
                             </div>
                             @error('deskripsi') <div class="text-danger">{{ $message }}</div> @enderror
                         </div>
+
                         <div class="d-flex justify-content-end">
                             <button type="submit" class="btn bg-gradient-dark btn-md mt-4 mb-4">{{ 'Simpan' }}</button>
                         </div>
