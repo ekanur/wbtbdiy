@@ -58,23 +58,9 @@
                             </div>    
                         </div>
                         
-                        <!-- looping field element by $fieldsAvailable -->
-                        <!-- field without error and without wire:model -->
-                        @foreach($fieldsAvailable as $index)
-                            @if($index % 2 == 1)
-                                <div class="col-md-9">
-                                    <div class="form-group">
-                                        <label for="pelaku{{$index}}" class="form-control-label">Pelaku Warisan Budaya</label>
-                                        <div class="@error('pelaku{{$index}}') border border-danger rounded-3 @enderror">
-                                        <input wire:model="pelaku{{$index}}" class="form-control" type="text"
-                                                    placeholder="Pelaku Warisan Budaya" id="pelaku{{$index}}">
-                                        </div>
-                                    </div>
-                                </div>
-                            @endif        
-                        @endforeach
+                      
                         
-                        <div class="row" wire:ignore>
+                        <div class="row" >
                             <div class="col-md-6">
                               <div class="form-group">
                                   <label for="domain" class="form-control-label">{{ __('Domain Warisan Budaya') }}</label>

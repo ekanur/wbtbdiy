@@ -15,10 +15,6 @@ class Pengusulan extends Component
     public $kondisi;
     public $deskripsi;
 
-    // $fieldsAvailable property for available input added
-    // by default 0  
-    public $fieldsAvailable = [0];
-
     public $showSuccesNotification  = false;
 
     public $showDemoNotification = false;
@@ -99,11 +95,4 @@ class Pengusulan extends Component
         ]);
     }
 
-    // function for add fields
-    public function addFields(){
-        if (count($this->fieldsAvailable) != 0){
-            $i = end($this->fieldsAvailable) + 1;
-            array_push($this->fieldsAvailable ,$i);
-        }
-    }
 }
