@@ -16,6 +16,7 @@ use App\Http\Livewire\Auth\Login;
 // use App\Http\Livewire\LaravelExamples\UserProfile;
 // use App\Http\Livewire\LaravelExamples\UserManagement;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\PencatatanController;
 
 use App\Http\Livewire\User\Dashboard;
 use App\Http\Livewire\User\Pengusulan;
@@ -43,6 +44,7 @@ use Illuminate\Http\Request;
 
 Route::get('/', [IndexController::class, 'index'])->name('index');
 Route::get("/ajukan", [IndexController::class, 'ajukan'])->name('ajukan');
+Route::post("/ajukan", [PencatatanController::class, 'simpan']);
 Route::get('/wbtb', [IndexController::class, 'wbtb'])->name('wbtb');
 Route::get('/wbtb/{wbtb}', [IndexController::class, 'detail'])->name('detail');
 Route::get('/preview/{id}', [IndexController::class, 'preview'])->name('preview');

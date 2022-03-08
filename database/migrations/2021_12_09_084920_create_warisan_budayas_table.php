@@ -16,13 +16,14 @@ class CreateWarisanBudayasTable extends Migration
         Schema::create('warisan_budaya', function (Blueprint $table) {
             $table->id();
             $table->string("judul");
-            $table->enum("kondisi", ['berkembang', 'bertahan', 'berkurang', 'terancam', 'punah']);
+            $table->string("domain");
+            $table->string("kondisi");
             $table->string("lokasi");
             $table->mediumText("deskripsi");
             $table->string("pelaku")->nullable();
+            $table->string("maestro")->nullable();
             $table->string("foto")->nullable();
             $table->string("video")->nullable();
-            $table->string("domain");
             $table->integer("user_id");
             $table->integer("is_approved", )->default(0);
             $table->timestamps();

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Request;
 use App\Models\WarisanBudaya;
 use App\Models\User;
 use App\Models\Berita;
 use App\Models\Event;
+use Illuminate\Http\Request;
 
 class IndexController extends Controller
 {
@@ -39,7 +39,9 @@ class IndexController extends Controller
     {
         $warisan_budaya = WarisanBudaya::whereIsApproved(0)->whereId($id)->firstOrFail();
         
-        if(auth()->user()->is_admin == 1 || auth()->user()->id == $warisan_budaya->user_id){
+        if(!auth()->user()){
+            return abort(404);
+        }elseif(auth()->user()->is_admin == 1 || auth()->user()->id == $warisan_budaya->user_id){
             return view("preview", ["warisan_budaya" => $warisan_budaya]);
         }
 

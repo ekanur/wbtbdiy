@@ -7,7 +7,8 @@
           <div class="card overflow-hidden mb-5">
             <div class="row">
               <div class="col-lg-8">
-                <form class="p-3" id="contact-form" method="post">
+                <form enctype="multipart/form-data" class="p-3" id="contact-form" method="post" action="{{url("ajukan")}}">
+                  {{ csrf_field() }}
                   <div class="card-header px-4 py-sm-5 py-3">
                     <h2>Pengajuan WBTB</h2>
                     <p class="lead"> oleh publik</p>
@@ -15,117 +16,180 @@
                   <div class="card-body pt-1">
                     <div class="row">
                       <div class="col-md-12 pe-2 mb-3">
+                        @if (session('message'))
+                        <div class="mt-3 alert alert-info alert-dismissible fade show" role="alert">
+                          {{-- <span class="alert-icon text-white"><i class="fas fa-ban"></i></span> --}}
+                          <span class="alert-text text-white">{{session('message')}}</span>
+                        </div>
+                        @endif
                         <p class="lead">Karya Budaya</p>
                         <label>Nama Karya Budaya</label>
-                        <input class="form-control" placeholder="Full Name" type="text">
+                        <input class="form-control" placeholder="Nama Karya Budaya" name="nama" type="text">
                       </div>
                       <div class="col-md-12 pe-2 mb-3">
                         <label>Nama Lain</label>
-                        <input class="form-control" placeholder="What you love" type="text">
+                        <input class="form-control" placeholder="Nama lain dari Warisan Budaya" name="nama_lain" type="text">
                       </div>
                       <div class="col-md-12 pe-2 mb-3">
                         <div class="form-group mb-0">
-                          <label>Domain</label>
-                          <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                            <label class="form-check-label" for="flexCheckChecked">
-                              Tradisi dan Ekspresi Lain
-                            </label>
-                          </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                            <label class="form-check-label" for="flexCheckChecked">
-                              Seni Pertunjukan
-                            </label>
-                          </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                            <label class="form-check-label" for="flexCheckChecked">
-                              Adat Istiadat Masyarakat, Ritus, dan Perayaan-perayaan
-                            </label>
-                          </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                            <label class="form-check-label" for="flexCheckChecked">
-                              Pengetahuan dan kebiasaan perilaku mengenai alam dan semesta
-                            </label>
-                          </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
-                            <label class="form-check-label" for="flexCheckChecked">
-                              Keterampilan dan Kemahiran Kerajinan Tradisional
-                            </label>
-                          </div>
+                        <table class="table table-responsive">
+                          <tr>
+                            <td>
+                              <label>Domain</label>
+                            </td>
+                            <td>
+                              <label for="">Prioritas</label>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <div class="form-check">
+                                <input class="form-check-input" name="domain[]" type="checkbox" value="Tradisi dan Ekspresi Lain" id="1">
+                                <label class="form-check-label" for="1">
+                                  Tradisi dan Ekspresi Lain
+                                </label>
+                              </div>
+                            </td>
+                            <td>
+                              <div class="form-check">
+                                <input class="form-check-input" name="prioritas" type="radio" name="prioritas" id="customRadio2" value="
+                                Tradisi dan Ekspresi Lain">
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <div class="form-check">
+                                <input class="form-check-input" name="domain[]" type="checkbox" value="Seni Pertunjukan" id="2">
+                                <label class="form-check-label" for="2">
+                                  Seni Pertunjukan
+                                </label>
+                              </div>
+                            </td>
+                            <td>
+                              <div class="form-check">
+                                <input class="form-check-input" name="prioritas" type="radio" name="prioritas" id="customRadio2" value="
+                                Tradisi dan Ekspresi Lain">
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <div class="form-check">
+                                <input class="form-check-input" name="domain[]" type="checkbox" value="Adat Istiadat Masyarakat, Ritus, dan Perayaan-perayaan" id="3">
+                                <label class="form-check-label" for="3">
+                                  Adat Istiadat Masyarakat, Ritus, dan Perayaan-perayaan
+                                </label>
+                              </div>
+                            </td>
+                            <td>
+                              <div class="form-check">
+                                <input class="form-check-input" name="prioritas" type="radio" name="prioritas" id="customRadio2" value="
+                                Tradisi dan Ekspresi Lain">
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <div class="form-check">
+                                <input class="form-check-input" name="domain[]" type="checkbox" value="Pengetahuan dan kebiasaan perilaku mengenai alam dan semesta" id="4">
+                                <label class="form-check-label" for="4">
+                                  Pengetahuan dan kebiasaan perilaku mengenai alam dan semesta
+                                </label>
+                              </div>
+                            </td>
+                            <td>
+                              <div class="form-check">
+                                <input class="form-check-input" name="prioritas" type="radio" name="prioritas" id="customRadio2" value="
+                                Tradisi dan Ekspresi Lain">
+                              </div>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>
+                              <div class="form-check">
+                                <input class="form-check-input" name="domain[]" type="checkbox" value="Keterampilan dan Kemahiran Kerajinan Tradisional" id="5">
+                                <label class="form-check-label" for="5">
+                                  Keterampilan dan Kemahiran Kerajinan Tradisional
+                                </label>
+                              </div>
+                            </td>
+                            <td>
+                              <div class="form-check">
+                                <input class="form-check-input" name="prioritas" type="radio" name="prioritas" id="customRadio2" value="
+                                Tradisi dan Ekspresi Lain">
+                              </div>
+                            </td>
+                          </tr>
+                        </table>
                         </div>
                       </div>
                       <div class="col-md-12 pe-2 mb-3">
                         <label>Kondisi Karya Budaya</label>
-                        <select name="" id="" class="form-control">
-                          <option value="">Sedang Berkembang</option>
-                          <option value="">Masih Bertahan</option>
-                          <option value="">Sudah Berkurang</option>
-                          <option value="">Terancam Punah</option>
-                          <option value="">Sudah punah atau tidak berfungsi lagi dalam masyarakat</option>
+                        <select name="kondisi" id="" class="form-control">
+                          <option value="Sedang Berkembang">Sedang Berkembang</option>
+                          <option value="Masih Bertahan">Masih Bertahan</option>
+                          <option value="Sudah Berkurang">Sudah Berkurang</option>
+                          <option value="Terancam Punah">Terancam Punah</option>
+                          <option value="Sudah Punah">Sudah punah atau tidak berfungsi lagi dalam masyarakat</option>
                         </select>
                       </div>
                       <div class="col-md-12 pe-2 mb-3">
                         <label>Lokasi</label>
-                        <select name="" id="" class="form-control">
-                          <option value="">Kabupaten Sleman</option>
-                          <option value="">Kabupaten Bantul</option>
-                          <option value="">Kabupaten Kulonprogo</option>
-                          <option value="">Kabupaten Gunung Kidul</option>
-                          <option value="">Kota Yogyakarta</option>
-                          <option value="">Keraton Yogyakarta</option>
+                        <select name="lokasi" id="" class="form-control">
+                          <option value="Kabupaten Sleman">Kabupaten Sleman</option>
+                          <option value="Kabupaten Bantul">Kabupaten Bantul</option>
+                          <option value="Kabupaten Kulonprogo">Kabupaten Kulonprogo</option>
+                          <option value="Kabupaten Gunung Kidul">Kabupaten Gunung Kidul</option>
+                          <option value="Kota Yogyakarta">Kota Yogyakarta</option>
+                          <option value="Keraton Yogyakarta">Keraton Yogyakarta</option>
                         </select>
                       </div>
                       <div class="col-md-12 pe-2 mb-3">
-                        {{-- <label>Alama</label> --}}
                         <textarea name="detail_alamat" id="" cols="30" rows="2" class="form-control" placeholder="Desa/Kecamatan/lingkungan"></textarea>
                       </div>
                       <div class="col-md-12 pe-2 mb-3">
                         <p class="lead">Identifikasi dan Definisi</p>
                         <label>Definisi Karya Budaya</label>
                         <textarea name="definisi" id="" cols="30" rows="2" class="form-control" placeholder="Definisi Karya Budaya"></textarea>
-
                       </div>
                       <div class="col-md-12 pe-2 mb-3">
                         <label>Upaya Pelestarian</label>
                         <textarea name="pelestarian" id="" cols="30" rows="2" class="form-control" placeholder="Definisi Karya Budaya"></textarea>
-
                       </div>
                       <div class="col-md-12 pe-2 mb-3">
                         <p class="lead">Nama komunitas/ organisasi/ asosiasi/ badan/ paguyuban/ kelompok sosial/ atau perorangan yang bersangkutan</p>
+                        <a href="" class="btn btn-sm btn-success"><i class="fas fa-plus"></i></a>
                         <table class="table" style="box-sizing: border-box; border: 3px solid #d8d8d8;">
                           <tbody><tr>
                             <td><label class="control-label requiredField" for="nama01"> Nama
                             </label></td>
                             <td>:</td>
-                            <td><input class="form-control" name="nama-comunity-1" placeholder="Nama" type="text" required=""></td>
+                            <td><input class="form-control" name="nama_komunitas" placeholder="Nama" type="text" required=""></td>
                           </tr>
                           <tr>
                             <td><label class="control-label requiredField" for="alamat01">
                                 Alamat </label></td>
                             <td>:</td>
-                            <td><input class="form-control" name="alamat-comunity-1" placeholder="Alamat" type="text" required=""></td>
+                            <td><input class="form-control" name="alamat_komunitas" placeholder="Alamat" type="text" required=""></td>
                           </tr>
                           <tr>
                             <td><label class="control-label requiredField" for="alamat01">
                                 Kode Pos </label></td>
                             <td>:</td>
-                            <td><input class="form-control" name="kode-pos-comunity-1" placeholder="Kode pos" type="number"></td>
+                            <td><input class="form-control" name="kode_pos_komunitas" placeholder="Kode pos" type="number"></td>
                           </tr>
                           <tr>
                             <td><label class="control-label requiredField" for="telp01"> No.
                                 Tel/Faks/Ponsel </label></td>
                             <td>:</td>
-                            <td><input class="form-control" name="no-telp-comunity-1" placeholder="No. Tel/Faks/Ponsel Anda" type="number" required=""></td>
+                            <td><input class="form-control" name="no_telp_komunitas" placeholder="No. Tel/Faks/Ponsel Anda" type="number" required=""></td>
                           </tr>
                           <tr>
                             <td><label class="control-label requiredField" for="email01">
                                 Email </label></td>
                             <td>:</td>
-                            <td><input class="form-control" name="email-comunity-1" placeholder="Email Anda" value="" type="text"></td>
+                            <td><input class="form-control" name="email_komunitas" placeholder="Email Anda" value="" type="text"></td>
                           </tr>
                         </tbody></table>
                       </div>
@@ -136,31 +200,31 @@
                             <td><label class="control-label requiredField" for="nama01"> Nama
                             </label></td>
                             <td>:</td>
-                            <td><input class="form-control" name="nama-comunity-1" placeholder="Nama" type="text" required=""></td>
+                            <td><input class="form-control" name="nama_maestro" placeholder="Nama" type="text" required=""></td>
                           </tr>
                           <tr>
                             <td><label class="control-label requiredField" for="alamat01">
                                 Alamat </label></td>
                             <td>:</td>
-                            <td><input class="form-control" name="alamat-comunity-1" placeholder="Alamat" type="text" required=""></td>
+                            <td><input class="form-control" name="alamat_maestro" placeholder="Alamat" type="text" required=""></td>
                           </tr>
                           <tr>
                             <td><label class="control-label requiredField" for="alamat01">
                                 Kode Pos </label></td>
                             <td>:</td>
-                            <td><input class="form-control" name="kode-pos-comunity-1" placeholder="Kode pos" type="number"></td>
+                            <td><input class="form-control" name="kode_pos_maestro" placeholder="Kode pos" type="number"></td>
                           </tr>
                           <tr>
                             <td><label class="control-label requiredField" for="telp01"> No.
                                 Tel/Faks/Ponsel </label></td>
                             <td>:</td>
-                            <td><input class="form-control" name="no-telp-comunity-1" placeholder="No. Tel/Faks/Ponsel Anda" type="number" required=""></td>
+                            <td><input class="form-control" name="no_telp_maestro" placeholder="No. Tel/Faks/Ponsel Anda" type="number" required=""></td>
                           </tr>
                           <tr>
                             <td><label class="control-label requiredField" for="email01">
                                 Email </label></td>
                             <td>:</td>
-                            <td><input class="form-control" name="email-comunity-1" placeholder="Email Anda" value="" type="text"></td>
+                            <td><input class="form-control" name="email_maestro" placeholder="Email Anda" value="" type="text"></td>
                           </tr>
                         </tbody></table>
                       </div>
@@ -172,19 +236,19 @@
                             <tr>
                               <th> Label</th>
                               <th> Images </th>
-                              <th> View </th>
+                              <th> Tambah </th>
                               <th></th>
                             </tr>
                           </thead>
                             
                           <tbody>
                             <tr data-value="1" id="latest-row-upload">
-                              <td><input id="label-image-1" name="label-image-1" type="text" class="form-control" required=""> </td>
-                              <td><input id="image-1" name="image-1" type="file" class="form-control" onchange="imageOnChange(event)" accept=".jpg, .jpeg, .jpe, .jfif, .bmp, .png, .tiff" required=""> </td>
+                              <td><input id="label_image" name="label_image" type="text" class="form-control" required=""> </td>
+                              <td><input id="image" name="image" type="file" class="form-control" onchange="imageOnChange(event)" accept=".jpg, .jpeg, .jpe, .jfif, .bmp, .png, .tiff" required=""> </td>
                               <td><a href="" data-lightbox="roadtrip"><img height="50px" data-value="" alt="" id="prev" src="" style="display:none"></a></td>
                               <td>
                                 <button type="button" onclick="deleteRowImages(this)" class="btn btn-danger" style="display:none"><i class="glyphicon glyphicon-remove"></i></button>
-                                <button type="button" onclick="addRow()" class="btn btn-info"><i class="glyphicon glyphicon-plus"></i></button>
+                                <button type="button" onclick="addRow()" class="btn btn-info"><i class="fas fa-plus"></i></button>
                               </td>
                             </tr>
                           </tbody>
@@ -193,25 +257,25 @@
                         <div class="col-md-12 main-box-video" style="box-sizing: border-box; border: 3px solid #d8d8d8;">
                           <div class="form-group pull-right">
                             <label class="control-label">Upload video</label>
-                            <input type="radio" class="upload-method" name="method-video-1" value="upload" onclick="onchangeVideoMethod(this, 'upload')">
+                            <input type="radio" class="upload-method" name="method_video" value="upload" onclick="onchangeVideoMethod(this, 'upload')">
                             <label class="control-label">Embedd video dari youtube</label>
-                            <input type="radio" class="embedd-method" name="method-video-1" value="embedd" onclick="onchangeVideoMethod(this, 'embedd')" checked="">
+                            <input type="radio" class="embedd-method" name="method_video" value="embedd" onclick="onchangeVideoMethod(this, 'embedd')"="">
                           </div>
                           <div class="col-md-12">
                             <b>Label Video</b>
                             <div class="form-group">
-                              <input class="form-control" name="label-video-1" placeholder="Label Video" type="text">
+                              <input class="form-control" name="label_video" placeholder="Label Video" type="text">
                             </div>
                             <span class="upload-video" style="display: none">
                               <b>Upload Video</b>
                               <div class="form-group">
-                                <input class="form-control" name="upload-video-1" onchange="videoOnchange(event)" placeholder="Label Video" type="file" accept=".flv, .mp4, .avi, .mkv, .mpg, .mpeg, .3gp, .mov, .webm, .amv, .ts, .mts, .vob, .dat" disabled="">
+                                <input class="form-control" name="upload_video" onchange="videoOnchange(event)" placeholder="Label Video" type="file" accept=".flv, .mp4, .avi, .mkv, .mpg, .mpeg, .3gp, .mov, .webm, .amv, .ts, .mts, .vob, .dat" disabled="">
                               </div>
                             </span>
                             <div class="embedd-video">
                               <b>Link Embed Video</b>
                               <div class="form-group">
-                                <input class="form-control" name="embedd-video-1" placeholder="Embed Video Dari Youtube" type="text" onblur="onblurInputVideo(this)">
+                                <input class="form-control" name="embed_video" placeholder="Embed Video Dari Youtube" type="text" onblur="onblurInputVideo(this)">
                                 <div class="error-message-video" style="display:none"><p class="text-danger">This text represents danger.</p></div>
                               </div>
                             
@@ -232,11 +296,11 @@
                 </form>
               </div>
               <div class="col-lg-4 position-relative bg-cover px-0" style="background-image: url('../assets/img/curved-images/curved5.jpg')">
-                {{-- <div class="position-absolute z-index-2 w-100 h-100 top-0 start-0 d-lg-block d-none">
-                  <img src="../assets/img/wave-1.svg" class="h-100 ms-n2" alt="vertical-wave">
-                </div> --}}
+                
                 <div class="z-index-2 text-center d-flex h-100 w-100 d-flex m-auto justify-content-center">
-                  <div class="mask bg-gradient-info opacity-9"></div>
+                  <div class="mask bg-gradient-info opacity-9">
+                    
+                  </div>
                   
                 </div>
               </div>

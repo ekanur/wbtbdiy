@@ -30,7 +30,7 @@
           <div class="mt-3 alert alert-primary alert-dismissible fade show" role="alert">
             <span class="alert-icon text-white"><i class="fas fa-ban"></i></span>
             <span class="alert-text text-white">Preview dari Pengusulan Wisata Budaya, halaman ini tidak dapat diakses secara publik.</span>
-        </div>
+          </div>
           <h6 class="opacity-7 text-uppercase font-weight-bolder text-sm">Detail</h6>
           <h3 class="title mb-4">{{$warisan_budaya->judul}}</h3>
           <span class="text-dark" style="text-align:justify">
