@@ -159,9 +159,24 @@
                       </div>
                       <div class="col-md-12 pe-2 mb-3">
                         <p class="lead">Nama komunitas/ organisasi/ asosiasi/ badan/ paguyuban/ kelompok sosial/ atau perorangan yang bersangkutan</p>
-                        <a href="" class="btn btn-sm btn-success"><i class="fas fa-plus"></i></a>
-                        <table class="table" style="box-sizing: border-box; border: 3px solid #d8d8d8;">
-                          <tbody><tr>
+                        <button onclick="addElement()" class="btn btn-sm btn-success"><i class="fas fa-plus"></i></button>
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        <table class="table komunitas" style="box-sizing: border-box; border: 3px solid #d8d8d8;">
+                          <tbody>
+                          <tr>
                             <td><label class="control-label requiredField" for="nama01"> Nama
                             </label></td>
                             <td>:</td>
@@ -240,15 +255,14 @@
                               <th></th>
                             </tr>
                           </thead>
-                            
                           <tbody>
-                            <tr data-value="1" id="latest-row-upload">
+                            <tr class="media" data-value="1" id="latest-row-upload">
                               <td><input id="label_image" name="label_image" type="text" class="form-control" required=""> </td>
                               <td><input id="image" name="image" type="file" class="form-control" onchange="imageOnChange(event)" accept=".jpg, .jpeg, .jpe, .jfif, .bmp, .png, .tiff" required=""> </td>
                               <td><a href="" data-lightbox="roadtrip"><img height="50px" data-value="" alt="" id="prev" src="" style="display:none"></a></td>
                               <td>
-                                <button type="button" onclick="deleteRowImages(this)" class="btn btn-danger" style="display:none"><i class="glyphicon glyphicon-remove"></i></button>
-                                <button type="button" onclick="addRow()" class="btn btn-info"><i class="fas fa-plus"></i></button>
+                                <button type="button" onclick="deleteRowImages(this)" class="btn btn-sm btn-danger" style="display:none"><i class="glyphicon glyphicon-remove"></i></button>
+                                <button type="button" onclick="addRow()" class="btn btn-sm btn-info"><i class="fas fa-plus"></i></button>
                               </td>
                             </tr>
                           </tbody>
@@ -296,12 +310,9 @@
                 </form>
               </div>
               <div class="col-lg-4 position-relative bg-cover px-0" style="background-image: url('../assets/img/curved-images/curved5.jpg')">
-                
                 <div class="z-index-2 text-center d-flex h-100 w-100 d-flex m-auto justify-content-center">
                   <div class="mask bg-gradient-info opacity-9">
-                    
                   </div>
-                  
                 </div>
               </div>
             </div>
