@@ -4,7 +4,7 @@
         <div class="col-12">
           <div class="card mb-4">
             <div class="card-header pb-0">
-              <h6>Daftar Pengusulan</h6>
+              <h6>Daftar Penetapan</h6>
             </div>
             <div class="card-body px-0 pt-0 pb-2">
               <div class="table-responsive p-0">
@@ -63,7 +63,7 @@
                     @empty
                     <tr>
                       <td colspan="5" class="text-center">
-                        <h6 class="text-muted">Belum ada Pengusulan Warisan Budaya</h6>
+                        <h6 class="text-muted">Belum ada Penetapan Warisan Budaya</h6>
                       </td>
                     </tr>
                     @endforelse

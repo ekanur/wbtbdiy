@@ -95,7 +95,8 @@ class Pencatatan extends Component
 
     public function render()
     {
-        return view('livewire.admin.pencatatan.main', ['warisan_budaya' => WarisanBudaya::whereUserId(auth()->user()->id)->orderByDesc("id")->get()]);
+        // dd(WarisanBudaya::whereIsApproved(0)->orderByDesc("id")->get()[0]['domain']);
+        return view('livewire.admin.pencatatan.main', ['warisan_budaya' => WarisanBudaya::whereIsApproved(0)->orderByDesc("id")->get()]);
     }
 
     public function create()

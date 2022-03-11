@@ -16,8 +16,8 @@
                             <h6 class="mb-0">Pencatatan</h6>
                         </div>
                         <div class="col-6 text-end">
-                            <button class="btn bg-gradient-dark mb-0" wire:click='create'><i class="fas fa-plus"
-                                    aria-hidden="true"></i> Buat Baru</button>
+                            <a href='{{route('ajukan')}}' class="btn bg-gradient-dark mb-0"><i class="fas fa-plus"
+                                    aria-hidden="true"></i> Buat Baru</a>
                         </div>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
@@ -34,10 +34,13 @@
                                 <thead>
                                     <tr>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Judul-Domain</th>
+                                            Nama Karya Budaya</th>
                                         <th
                                             class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                            Lokasi-Kondisi</th>
+                                            Lokasi</th>
+                                            <th
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Domain</th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Tanggal Pengajuan</th>
@@ -53,34 +56,35 @@
                                                 <div class="d-flex flex-column justify-content-center">
                                                     <h6 class="mb-0 text-sm"><a href="{{route("detail",
                                                             ["wbtb"=>$warisan_budaya->id])}}"
-                                                            target="_blank">{{$warisan_budaya->judul}}</a></h6>
-                                                    <p class="text-xs text-secondary mb-0">{{$warisan_budaya->domain}}
-                                                    </p>
+                                                            target="_blank">{{$warisan_budaya->judul[0]}}</a></h6>
+                                                    
                                                 </div>
                                             </div>
                                         </td>
                                         <td>
-                                            <p class="text-xs font-weight-bold mb-0">{{$warisan_budaya->lokasi}}</p>
-                                            <p class="text-xs text-secondary mb-0">{{$warisan_budaya->kondisi}}</p>
+                                            <p class="text-xs font-weight-bold mb-0">{{$warisan_budaya->lokasi[0]}}</p>
                                         </td>
-                                        <td class="align-middle text-center">
-                                            <span
-                                                class="text-secondary text-xs font-weight-bold">{{$warisan_budaya->created_at}}</span>
+                                        <td class="">
+                                            @forelse ($warisan_budaya->domain[0] as $domain)
+                                            <p class="text-secondary text-xs font-weight-bold">{{$domain}}</p>
+                                            @empty
+                                                -
+                                            @endforelse
+                                            
+                                        </td>
+                                        <td>
+                                            <p class="text-xs font-weight-bold mb-0">{{$warisan_budaya->created_at}}</p>
                                         </td>
                                         <td class="align-middle">
-                                            @if ($warisan_budaya->is_approved == 1)
-                                            <a href="{{route('detail', ['wbtb' => $warisan_budaya->id])}}"
-                                                class="btn btn-secondary font-weight-bold text-xs" target="_blank"><i
-                                                    class="fas fa-eye"></i> Show</a>
-                                            @else
+                                            
                                             <a href="{{route('preview', ['id' => $warisan_budaya->id])}}"
                                                 class="btn bg-gradient-dark font-weight-bold text-xs"
-                                                target="_blank">Preview</a>
-                                            @endif
-
-                                            <button wire:click='edit({{$warisan_budaya->id}})' class="btn btn-default font-weight-bold text-xs" data-toggle="tooltip"
-                                                data-original-title="Edit user">
-                                                Edit
+                                                target="_blank">Lihat</a>
+                                            
+                                            
+                                            <button wire:click='edit({{$warisan_budaya->id}})' class="btn btn-success font-weight-bold text-xs" data-toggle="tooltip"
+                                                data-original-title="Approve">
+                                                Approve
                                             </button>
                                             <button wire:click='deleteId({{$warisan_budaya->id}})' class="btn btn-danger font-weight-bold text-xs" data-bs-toggle="modal" data-bs-target="#delete">
                                                 <i class="fas fa-trash-alt"></i> Hapus

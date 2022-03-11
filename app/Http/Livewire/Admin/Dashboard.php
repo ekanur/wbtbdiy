@@ -17,7 +17,7 @@ class Dashboard extends Component
 
     public function render()
     {
-        return view('livewire.admin.dashboard', ['warisan_budaya' => WarisanBudaya::whereIsApproved(0)->get(), "jumlah_warisan_budaya" => WarisanBudaya::whereIsApproved(1)->count()]);
+        return view('livewire.admin.dashboard', ["jumlah_warisan_budaya" => WarisanBudaya::whereIsApproved(1)->count()]);
     }
 
     public function approve($id)

@@ -36,7 +36,7 @@
           <div class="col-md-4 position-relative">
             <div class="p-3 text-center">
               <h1 class="text-gradient text-primary"><span id="state1" countTo="{{$jumlah_warisan_budaya}}">0</span>+</h1>
-              <h5 class="mt-3">Warisan Budaya</h5>
+              <h5 class="mt-3">Pencatatan</h5>
               <p class="text-sm"></p>
             </div>
             <hr class="vertical dark">
@@ -44,7 +44,7 @@
           <div class="col-md-4 position-relative">
             <div class="p-3 text-center">
               <h1 class="text-gradient text-primary"> <span id="state2" countTo="{{$jumlah_pengusulan}}">0</span>+</h1>
-              <h5 class="mt-3">Pengusulan</h5>
+              <h5 class="mt-3">Penetapan</h5>
               <p class="text-sm"></p>
             </div>
             <hr class="vertical dark">
@@ -52,7 +52,7 @@
           <div class="col-md-4">
             <div class="p-3 text-center">
               <h1 class="text-gradient text-primary" id="state3" countTo="{{$jumlah_user}}">0</h1>
-              <h5 class="mt-3">Member</h5>
+              <h5 class="mt-3">User</h5>
               <p class="text-sm"></p>
             </div>
           </div>
@@ -62,34 +62,103 @@
   </div>
 </section>
 
-<section class="py-5">
+<section class="">
   <div class="container">
     <div class="row">
       <div class="row text-center my-sm-5 mt-5">
         <div class="col-lg-6 mx-auto">
           <!-- <h2 class="text-primary text-gradient mb-0">Profile WBTb Terbaru</h2> -->
-          <h2 class="">WBTb Terbaru</h2>
-          <p class="lead">Informasi Warisan Budaya Tak Benda Terbaru di Daerah Istimewa Yogyakarta.</p>
+          <h2 class="">Pencatatan Terbaru</h2>
+          {{-- <p class="lead">Pencatatan Warisan Budaya Tak Benda Terbaru di Daerah Istimewa Yogyakarta.</p> --}}
         
+        </div>
       </div>
     </div>
+    <div class="row">
+      <div class="card">
+        <div class="table-responsive">
+          <table class="table align-items-center mb-0">
+            <thead>
+              <tr>
+                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Judul</th>
+                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Lokasi</th>
+                {{-- <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Technology</th> --}}
+                <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Pengajuan</th>
+                <th class="text-secondary opacity-7"></th>
+              </tr>
+            </thead>
+            <tbody>
+              @forelse ($warisan_budaya as $warisan_budaya)
+              <tr>
+                <td>
+                  <div class="d-flex px-2 py-1">
+                    
+                    <div class="d-flex flex-column justify-content-center">
+                      <h6 class="mb-0 text-xs">{{$warisan_budaya->judul[0]}}</h6>
+                      <p class="text-xs text-secondary mb-0">{{$warisan_budaya->judul[1]}}</p>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <p class="text-xs font-weight-bold mb-0">{{$warisan_budaya->lokasi[0]}}</p>
+                  <p class="text-xs text-secondary mb-0">{{$warisan_budaya->lokasi[1]}}</p>
+                </td>
+                {{-- <td class="align-middle text-center text-sm">
+                  <span class="badge bg-success">Online</span>  
+                </td> --}}
+                <td class="align-middle text-center">
+                  <span class="text-secondary text-xs font-weight-bold">{{$warisan_budaya->created_at}}</span>
+                </td>
+                <td class="align-middle">
+                  <a href="{{url('/wbtb/'.$warisan_budaya->id)}}" class="text-secondary font-weight-bold text-xs" data-toggle="tooltip" data-original-title="Edit user">
+                    <i class="fas fa-eye"></i> Lihat
+                  </a>
+                </td>
+              </tr>
+              @empty
+                  <tr>
+                    <td colspan="4" class="text-center">
+                      <small class="text-secondary">Belum ada data Pencatatan Warisan Budaya tak Benda</small>
+                    </td>
+                  </tr>
+              @endforelse
+              
+      
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
   </div>
-  <div class="container mt-5">
-  <div class="row">
-    @foreach ($warisan_budaya as $warisan_budaya)
+</section>
+
+<section class="py-5">
+  <div class="container">
+    <div class="row  text-center my-sm-5 mt-5">
+        <div class="col-lg-6 mx-auto">
+          <!-- <h2 class="text-primary text-gradient mb-0">Profile WBTb Terbaru</h2> -->
+          <h2 class="">Berita WBTB Terbaru</h2>
+          <p class="lead">Informasi Warisan Budaya Tak Benda Terbaru di Daerah Istimewa Yogyakarta.</p>
+        
+        </div>
+    </div>
+    <div class="row">
+    @foreach ($berita as $berita)
       <div class="col-lg-3 col-sm-6">
         <div class="card card-plain card-blog">
           <div class="card-image border-radius-lg position-relative">
-            <a href="{{ url('wbtb/'.$warisan_budaya->id) }}">
-              <img class="w-100 border-radius-lg move-on-hover shadow" src="{{asset('upload/'.$warisan_budaya->foto[0])}}">
+            <a href="{{ url('berita/'.$berita->id) }}">
+              {{-- <img class="w-100 border-radius-lg move-on-hover shadow" src="{{asset('upload/'.$berita->foto[0])}}"> --}}
             </a>
           </div>
           <div class="card-body px-0">
             <h5>
-              <a href="{{ url('wbtb/'.$warisan_budaya->id) }}" class="text-dark font-weight-bold">{{$warisan_budaya->judul}}</a>
+              <a href="{{ url('berita/'.$berita->id) }}" class="text-dark font-weight-bold">{{$berita->judul}}</a>
             </h5>
-            {!!substr(strip_tags($warisan_budaya->deskripsi, '<p>'),0,270)!!}... <br/>
-            <a href="{{ url('wbtb/'.$warisan_budaya->id) }}" class="text-info icon-move-right">Lebih Lanjut
+            {!!substr(strip_tags($berita->konten, '<p>'),0,270)!!}... <br/>
+            <a href="{{ url('berita/'.$berita->id) }}" class="text-info icon-move-right">Lebih Lanjut
               <i class="fas fa-arrow-right text-sm" aria-hidden="true"></i>
             </a>
           </div>
@@ -102,10 +171,10 @@
           <div class="full-background" style="background-image: url('https://www.kratonjogja.id/upload/images/peristiwa/img_bdiMBM3.jpg')"></div>
           <div class="card-body">
             <div class="content-left text-start my-auto py-4">
-              <a href="{{ url('wbtb') }}">
-                <h2 class="card-title text-white">Lihat WBTb Lainnya</h2>
-                <p class="card-description text-white">Terdapat lebih dari {{$jumlah_warisan_budaya}} WBTb yang telah terdaftar di Database. </p>
-                </a><a href="{{ url('wbtb') }}" class="text-white icon-move-right">Lihat Semua
+              <a href="{{ url('berita') }}">
+                <h2 class="card-title text-white">Lihat Berita Lainnya</h2>
+                <p class="card-description text-white">Terdapat lebih dari {{$jumlah_warisan_budaya}} Berita WBTB DIY. </p>
+                </a><a href="{{ url('berita') }}" class="text-white icon-move-right">Lihat Semua
                   <i class="fas fa-arrow-right text-sm" aria-hidden="true"></i>
                 </a>
               
@@ -228,9 +297,13 @@
 <section class="py-2">
   <div class="container">
     <div class="row">
+      <div class="card">
+        <div class="table-responsive">
       <div class="col-lg-12 mx-auto text-center">
         <h2 class="mb-0">Agenda Dinas Kebudayaan DIY</h2>
         <div id="calendar" class='my-5'></div>
+      </div>
+        </div>
       </div>
     </div>
     

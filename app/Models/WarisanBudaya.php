@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\AsArrayObject;
 
 class WarisanBudaya extends Model
 {
@@ -23,10 +24,18 @@ class WarisanBudaya extends Model
         "is_approved"
     ];
 
-    protected $cast = [
+    protected $casts = [
         'foto' => 'array',
-        'created_at' => 'datetime:Y-m-d',
-        'updated_at' => 'datetime:Y-m-d',
+        'created_at' => 'datetime:d-m-Y',
+        'updated_at' => 'datetime:d-m-Y',
+        'judul' => AsArrayObject::class,
+        'domain' => AsArrayObject::class,
+        'lokasi' => AsArrayObject::class,
+        'deskripsi' => AsArrayObject::class,
+        'pelaku' => AsArrayObject::class,
+        'maestro' => AsArrayObject::class,
+        'foto' => AsArrayObject::class,
+        'video' => AsArrayObject::class,
     ];
 
     public function user()
@@ -36,8 +45,8 @@ class WarisanBudaya extends Model
 
     public function getFotoAttribute($value)
     {
-        $value = (0 === sizeof(json_decode($value)))? array("default.jpg") :json_decode($value);
+        // $value = (0 === sizeof(json_decode($value)))? array("default.jpg") :json_decode($value);
         
-        return $value;
+        // return $value;
     }
 }

@@ -18,7 +18,7 @@
   <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
   <link href="{{ asset('assets/soft-ui/css/nucleo-svg.css') }}" rel="stylesheet" />
   <!-- CSS Files -->
-  <link id="pagestyle" href="{{ asset('assets/soft-ui/css/soft-design-system.css?v=1.0.5') }}" rel="stylesheet" />
+  <link href="{{ asset('assets/soft-ui/css/soft-design-system.css?v=1.0.5') }}" rel="stylesheet" />
   <link href="{{ asset('assets/plugins/fullcalendar/lib/main.min.css') }}" rel="stylesheet"/>
   @stack('style')
 </head>
@@ -41,7 +41,7 @@
               </span>
             </button>
             <div class="collapse navbar-collapse pt-3 pb-2 py-lg-0 w-100" id="navigation">
-              <ul class="navbar-nav navbar-nav-hover ms-lg-8 w-100">
+              <ul class="navbar-nav navbar-nav-hover ms-lg-7 w-70">
                 
                 <li class="nav-item dropdown dropdown-hover mx-2">
                   <a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center" id="dropdownMenuBlocks" href="{{ url('wbtb') }}" aria-expanded="false">

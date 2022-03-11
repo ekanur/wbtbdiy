@@ -77,7 +77,7 @@ Route::middleware('auth')->prefix('user')->name('user.')->group(function () {
 
 Route::middleware('admin')->prefix('admin')->name('admin.')->group(function(){
     Route::get('/', AdminDashboard::class)->name('dashboard');
-    Route::get('/pengusulan', AdminPengusulan::class)->name('pengusulan');
+    Route::get('/pengusulan', AdminPengusulan::class)->name('penetapan');
     Route::get('/pencatatan', AdminPencatatan::class)->name('pencatatan');
     Route::get('/berita', AdminBerita::class)->name('berita');
     Route::get('/event', AdminEvent::class)->name('event');

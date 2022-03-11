@@ -299,7 +299,7 @@
                 
                 <div class="z-index-2 text-center d-flex h-100 w-100 d-flex m-auto justify-content-center">
                   <div class="mask bg-gradient-info opacity-9">
-                    
+                  
                   </div>
                   
                 </div>

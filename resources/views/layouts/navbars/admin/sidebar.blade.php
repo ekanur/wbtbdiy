@@ -43,9 +43,21 @@
             <li class="nav-item mt-2">
                 <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Fitur Utama</h6>
             </li>
+            
+            <li class="nav-item pb-2">
+                <a class="nav-link {{ Route::currentRouteName() == 'admin.pencatatan' ? 'active' : '' }}"
+                    href="{{ route('admin.pencatatan') }}">
+                    <div
+                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+                        <i style="font-size: 1rem;" class="fas fa-lg fa-list-ul ps-2 pe-2 text-center
+                        {{ in_array(request()->route()->getName(),['admin.pencatatan']) ? 'text-white' : 'text-dark' }}"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Pencatatan</span>
+                </a>
+            </li>
             <li class="nav-item">
-                <a class="nav-link {{ Route::currentRouteName() == 'admin.pengusulan' ? 'active' : '' }}"
-                    href="{{ route('admin.pengusulan') }}">
+                <a class="nav-link {{ Route::currentRouteName() == 'admin.penetapan' ? 'active' : '' }}"
+                    href="{{ route('admin.penetapan') }}">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
                         <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1"
@@ -72,17 +84,6 @@
                         </svg>
                     </div>
                     <span class="nav-link-text ms-1">Penetapan</span>
-                </a>
-            </li>
-            <li class="nav-item pb-2">
-                <a class="nav-link {{ Route::currentRouteName() == 'admin.pencatatan' ? 'active' : '' }}"
-                    href="{{ route('admin.pencatatan') }}">
-                    <div
-                        class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
-                        <i style="font-size: 1rem;" class="fas fa-lg fa-list-ul ps-2 pe-2 text-center
-                        {{ in_array(request()->route()->getName(),['admin.pencatatan']) ? 'text-white' : 'text-dark' }}"></i>
-                    </div>
-                    <span class="nav-link-text ms-1">Pencatatan</span>
                 </a>
             </li>
             <li class="nav-item pb-2">

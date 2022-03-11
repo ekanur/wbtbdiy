@@ -13,7 +13,8 @@ class IndexController extends Controller
     public function index()
     {
         return view("index", [
-            'warisan_budaya' => WarisanBudaya::whereIsApproved(1)->limit(3)->orderByDesc("id")->get(),
+            'warisan_budaya' => WarisanBudaya::orderByDesc("id")->get(),
+            'berita' => Berita::limit(3)->orderByDesc("id")->get(),
             'jumlah_warisan_budaya' => WarisanBudaya::whereIsApproved(1)->count(),
             'jumlah_pengusulan' => WarisanBudaya::whereIsApproved(0)->count(),
             'jumlah_user' => User::count()
