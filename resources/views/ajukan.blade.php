@@ -11,7 +11,14 @@
                   {{ csrf_field() }}
                   <div class="card-header px-4 py-sm-5 py-3">
                     <h2>Pengajuan WBTB</h2>
-                    <p class="lead"> oleh publik</p>
+                    <p class="lead"> oleh 
+                      @guest
+                        Publik
+                      @endguest
+                      @auth
+                        {{ucwords(auth()->user()->name)}}   
+                      @endauth
+                  </p>
                   </div>
                   <div class="card-body pt-1">
                     <div class="row">

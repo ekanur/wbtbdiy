@@ -1,9 +1,10 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\WarisanBudaya;
+use Illuminate\Support\Facades\Auth;
+
 
 class PencatatanController extends Controller
 {
@@ -20,7 +21,7 @@ class PencatatanController extends Controller
         $warisan_budaya->foto       = json_encode(array($request->label_image, $this->uploadMedia($request->file('image')))); //proses upload foto
         // $warisan_budaya->foto       = json_encode(array($request->label_image, "logo.png")); //dummy foto
         $warisan_budaya->video      = json_encode(array($request->label_video, $request->embed_video));
-        $warisan_budaya->user_id    = 2; // publik user_id
+        $warisan_budaya->user_id    = (Auth::check())?auth()->user()->id:100; // publik user_id
         $warisan_budaya->save();
 
         return redirect("ajukan")->with("message", "Berhasil mengajukan pencatatan");
