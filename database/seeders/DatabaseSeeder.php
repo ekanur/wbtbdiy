@@ -16,12 +16,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::factory()->create([
-            'name' => 'admin',
-            'email' => 'admin@wbtbdiy.com',
-            'password' => Hash::make('secret'),
-            'is_admin' => 1
-        ]);
+        // User::factory()->create([
+        //     'name' => 'admin',
+        //     'email' => 'admin@wbtbdiy.com',
+        //     'password' => Hash::make('secret'),
+        //     'is_admin' => 1
+        // ]);
 
         User::factory()->create([
             'name' => 'sleman',
