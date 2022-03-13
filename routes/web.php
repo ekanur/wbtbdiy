@@ -54,12 +54,12 @@ Route::get('/event', [IndexController::class, 'event'])->name("event");
 Route::get('/event/{event}', [IndexController::class, 'detailEvent'])->name("detail-event");
 
 
-Route::get('/sign-up', SignUp::class)->name('sign-up');
+// Route::get('/sign-up', SignUp::class)->name('sign-up');
 Route::get('/login', Login::class)->name('login');
 
-Route::get('/login/forgot-password', ForgotPassword::class)->name('forgot-password');
+// Route::get('/login/forgot-password', ForgotPassword::class)->name('forgot-password');
  
-Route::get('/reset-password/{id}',ResetPassword::class)->name('reset-password')->middleware('signed');
+// Route::get('/reset-password/{id}',ResetPassword::class)->name('reset-password')->middleware('signed');
 
 Route::middleware('auth')->prefix('user')->name('user.')->group(function () {
     Route::get('/', Dashboard::class)->name('dashboard');

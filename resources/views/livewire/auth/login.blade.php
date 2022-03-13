@@ -41,16 +41,12 @@
                                 </div>
                             </form>
                         </div>
-                        <div class="card-footer text-center pt-0 px-lg-2 px-1">
+                        {{-- <div class="card-footer text-center pt-0 px-lg-2 px-1">
                             <small class="text-muted">{{ __('Lupa Password? Klik ') }} <a
                                     href="{{ route('forgot-password') }}"
                                     class="text-info text-gradient font-weight-bold">{{ __('disini') }}</a></small>
-                            <p class="mb-4 text-sm mx-auto">
-                                {{ __(' Ingin mendaftarkan akun?') }}
-                                <a href="{{ route('sign-up') }}"
-                                    class="text-info text-gradient font-weight-bold">{{ __('Daftar Sekarang') }}</a>
-                            </p>
-                        </div>
+                           
+                        </div> --}}
                     </div>
                 </div>
                 <div class="col-md-6">
