@@ -25,7 +25,6 @@ class WarisanBudaya extends Model
     ];
 
     protected $casts = [
-        'foto' => 'array',
         'created_at' => 'datetime:d-m-Y',
         'updated_at' => 'datetime:d-m-Y',
         'judul' => AsArrayObject::class,
@@ -36,6 +35,8 @@ class WarisanBudaya extends Model
         'maestro' => AsArrayObject::class,
         'foto' => AsArrayObject::class,
         'video' => AsArrayObject::class,
+        'file' => AsArrayObject::class,
+
     ];
 
     public function user()

@@ -24,6 +24,7 @@ class CreateWarisanBudayasTable extends Migration
             $table->string("maestro")->nullable();
             $table->string("foto")->nullable();
             $table->string("video")->nullable();
+            $table->string("file")->nullable();
             $table->integer("user_id");
             $table->integer("is_approved", )->default(0);
             $table->timestamps();

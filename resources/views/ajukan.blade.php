@@ -168,50 +168,37 @@
                         <p class="lead">Nama komunitas/ organisasi/ asosiasi/ badan/ paguyuban/ kelompok sosial/ atau perorangan yang bersangkutan</p>
                         <button onclick="addElement()" class="btn btn-sm btn-success"><i class="fas fa-plus"></i></button>
                         
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
                         <table class="table komunitas" style="box-sizing: border-box; border: 3px solid #d8d8d8;">
                           <tbody>
                           <tr>
                             <td><label class="control-label requiredField" for="nama01"> Nama
                             </label></td>
                             <td>:</td>
-                            <td><input class="form-control" name="nama_komunitas" placeholder="Nama" type="text" required=""></td>
+                            <td><input class="form-control" name="nama_komunitas[]" placeholder="Nama" type="text" required=""></td>
                           </tr>
                           <tr>
                             <td><label class="control-label requiredField" for="alamat01">
                                 Alamat </label></td>
                             <td>:</td>
-                            <td><input class="form-control" name="alamat_komunitas" placeholder="Alamat" type="text" required=""></td>
+                            <td><input class="form-control" name="alamat_komunitas[]" placeholder="Alamat" type="text" required=""></td>
                           </tr>
                           <tr>
                             <td><label class="control-label requiredField" for="alamat01">
                                 Kode Pos </label></td>
                             <td>:</td>
-                            <td><input class="form-control" name="kode_pos_komunitas" placeholder="Kode pos" type="number"></td>
+                            <td><input class="form-control" name="kode_pos_komunitas[]" placeholder="Kode pos" type="number"></td>
                           </tr>
                           <tr>
                             <td><label class="control-label requiredField" for="telp01"> No.
                                 Tel/Faks/Ponsel </label></td>
                             <td>:</td>
-                            <td><input class="form-control" name="no_telp_komunitas" placeholder="No. Tel/Faks/Ponsel Anda" type="number" required=""></td>
+                            <td><input class="form-control" name="no_telp_komunitas[]" placeholder="No. Tel/Faks/Ponsel Anda" type="number" required=""></td>
                           </tr>
                           <tr>
                             <td><label class="control-label requiredField" for="email01">
                                 Email </label></td>
                             <td>:</td>
-                            <td><input class="form-control" name="email_komunitas" placeholder="Email Anda" value="" type="text"></td>
+                            <td><input class="form-control" name="email_komunitas[]" placeholder="Email Anda" value="" type="text"></td>
                           </tr>
                         </tbody></table>
                       </div>
@@ -264,8 +251,8 @@
                           </thead>
                           <tbody>
                             <tr class="media" data-value="1" id="latest-row-upload">
-                              <td><input id="label_image" name="label_image" type="text" class="form-control" required=""> </td>
-                              <td><input id="image" name="image" type="file" class="form-control" onchange="imageOnChange(event)" accept=".jpg, .jpeg, .jpe, .jfif, .bmp, .png, .tiff" required=""> </td>
+                              <td><input id="label_image" name="label_image[]" type="text" class="form-control" required=""> </td>
+                              <td><input id="image" name="image[]" type="file" class="form-control" onchange="imageOnChange(event)" accept=".jpg, .jpeg, .jpe, .jfif, .bmp, .png, .tiff" required=""> </td>
                               <td><a href="" data-lightbox="roadtrip"><img height="50px" data-value="" alt="" id="prev" src="" style="display:none"></a></td>
                               <td>
                                 <button type="button" onclick="deleteRowImages(this)" class="btn btn-sm btn-danger" style="display:none"><i class="glyphicon glyphicon-remove"></i></button>
@@ -306,6 +293,25 @@
                             </div>
                           </div>
                         </div>
+                      </div>
+
+                      <div class="col-md-12 pe-2 mb-3">
+                        <p class="lead">Kajian Akademis</p>
+                        {{-- <div class="form-group pull-right">
+                          <label class="control-label">Upload PDF</label>
+                          <input type="radio" class="upload-method" name="kajian_akademis" value="upload" onclick="onchangeVideoMethod(this, 'upload')">
+                          <label class="control-label">Teks Deskripsi</label>
+                          <input type="radio" class="embedd-method" name="kajian_akademis" value="embedd" onclick="onchangeVideoMethod(this, 'embedd')"="">
+                        </div> --}}
+                          <b for="" class="control-label">File PDF</b>                          
+                          <input type="file" name="kajian_akademis_file" class="form-control" id="">
+                          {{-- <b for="" class="control-label">Deskripsi</b>                          
+                          <textarea name="kajian_akademis_text" class="pt-3 form-control" placeholder="Deksripsi Kajian Akademis" id="" cols="30" rows="10"></textarea> --}}
+                        
+                      </div>
+                      <div class="col-md-12 pe-2 mb-3">
+                        <p class="lead">Surat Persetujuan</p>                        
+                        <input type="file" name="surat_persetujuan" class="form-control" id=""> 
                       </div>
                     </div>
                     <div class="row">
