@@ -198,7 +198,7 @@
                             <td><label class="control-label requiredField" for="email01">
                                 Email </label></td>
                             <td>:</td>
-                            <td><input class="form-control" name="email_komunitas[]" placeholder="Email Anda" value="" type="text"></td>
+                            <td><input class="form-control" name="email_komunitas[]" placeholder="Email Anda" value="" type="email"></td>
                           </tr>
                         </tbody></table>
                       </div>
@@ -233,7 +233,7 @@
                             <td><label class="control-label requiredField" for="email01">
                                 Email </label></td>
                             <td>:</td>
-                            <td><input class="form-control" name="email_maestro" placeholder="Email Anda" value="" type="text"></td>
+                            <td><input class="form-control" name="email_maestro" placeholder="Email Anda" value="" type="email"></td>
                           </tr>
                         </tbody></table>
                       </div>
@@ -262,36 +262,36 @@
                           </tbody>
                         </table>
                         <label>Video</label>
-                        <div class="col-md-12 main-box-video" style="box-sizing: border-box; border: 3px solid #d8d8d8;">
-                          <div class="form-group pull-right">
-                            <label class="control-label">Upload video</label>
-                            <input type="radio" class="upload-method" name="method_video" value="upload" onclick="onchangeVideoMethod(this, 'upload')">
-                            <label class="control-label">Embedd video dari youtube</label>
-                            <input type="radio" class="embedd-method" name="method_video" value="embedd" onclick="onchangeVideoMethod(this, 'embedd')"="">
-                          </div>
-                          <div class="col-md-12">
+                        <div class="col-md-12 main-box-video" style="border:2px solid #ebebeb; padding:0.92em">
                             <b>Label Video</b>
                             <div class="form-group">
                               <input class="form-control" name="label_video" placeholder="Label Video" type="text">
                             </div>
-                            <span class="upload-video" style="display: none">
-                              <b>Upload Video</b>
-                              <div class="form-group">
-                                <input class="form-control" name="upload_video" onchange="videoOnchange(event)" placeholder="Label Video" type="file" accept=".flv, .mp4, .avi, .mkv, .mpg, .mpeg, .3gp, .mov, .webm, .amv, .ts, .mts, .vob, .dat" disabled="">
+                            <nav>
+                              <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Upload Video</button>
+                                <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Embed</button>
                               </div>
-                            </span>
-                            <div class="embedd-video">
-                              <b>Link Embed Video</b>
-                              <div class="form-group">
-                                <input class="form-control" name="embed_video" placeholder="Embed Video Dari Youtube" type="text" onblur="onblurInputVideo(this)">
-                                <div class="error-message-video" style="display:none"><p class="text-danger">This text represents danger.</p></div>
+                            </nav>
+                            <div class="tab-content" id="nav-tabContent">
+                              <div class="tab-pane fade show active pt-3" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                                
+                                  <div class="form-group">
+                                    <input class="form-control" name="upload_video" onchange="videoOnchange(event)" placeholder="Video" type="file" accept="video/*">
+                                  </div>
+
                               </div>
-                            
-                              <div class="form-group preview-video" style="display:none;">
-                                <iframe width="100%" height="315" src="" frameborder="0" allowfullscreen=""></iframe>
+                              <div class="tab-pane fade pt-3" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                                <div class="form-group">
+                                    <input class="form-control" name="embed_video" placeholder="Embed Video Dari Youtube" type="text" onblur="onblurInputVideo(this)">
+                                    <div class="error-message-video" style="display:none"><p class="text-danger">This text represents danger.</p></div>
+                                  </div>
+                                
+                                  <div class="form-group preview-video" style="display:none;">
+                                    <iframe width="100%" height="315" src="" frameborder="0" allowfullscreen=""></iframe>
+                                  </div>
                               </div>
                             </div>
-                          </div>
                         </div>
                       </div>
 
